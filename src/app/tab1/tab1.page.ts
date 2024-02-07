@@ -1,39 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
+  tasks: any;
+  newTask: any;
 
-  constructor() {
+ constructor(private firebaseService: FirebaseService ) { }
+
+  ngOnInit() {
+    this.firebaseService.getTasks().subscribe(data => {
+      this.tasks = data.map(e => {
+        return {
+          id: e.payload.key,
+          name: e.payload.val()['title']
+        };
+      });
+    });
   }
-  todos = [
-    { task: 'Zrobić zakupy', completed: false },
-    { task: 'Umyć samochód', completed: true },
-    { task: 'Przygotować obiad', completed: false },
-  ];
-
-  newTask: string = '';
 
   addTask() {
-    if (this.newTask.trim() !== '') {
-      this.todos.push({ task: this.newTask, completed: false });
-      this.newTask = '';
-    }
+    this.firebaseService.addTask(this.newTask);
+    this.newTask = '';
   }
 
-  removeTask(index: number) {
-    this.todos.splice(index, 1);
+  removeTask(taskId: string) {
+    this.firebaseService.removeTask(taskId);
   }
-
-  toggleCompletion(index: number) {
-    this.todos[index].completed = !this.todos[index].completed;
-  }
-
 
 }

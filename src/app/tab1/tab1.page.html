@@ -14,10 +14,10 @@
   </ion-header>
 
   <ion-list>
-    <ion-item *ngFor="let todo of todos; let i = index">
-      <ion-label>{{ todo.task }}</ion-label>
-      <ion-checkbox [(ngModel)]="todo.completed" (ionChange)="toggleCompletion(i)"></ion-checkbox>
-      <ion-button color="danger" (click)="removeTask(i)" slot="end">
+    <ion-item *ngFor="let task of tasks">
+      <ion-label>{{ task.name }}</ion-label>
+      <!-- <ion-checkbox [(ngModel)]="todo.completed" (ionChange)="toggleCompletion(i)"></ion-checkbox> -->
+      <ion-button color="danger" (click)="removeTask(task.id)" slot="end">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>
@@ -25,7 +25,7 @@
 
 
   <ion-item>
-    <ion-input placeholder="Dodaj nowe zadanie" [(ngModel)]="newTask" (keyup.enter)="addTask()"></ion-input>
+    <ion-input placeholder="New Task" [(ngModel)]="newTask"></ion-input>
     <ion-button color="primary" (click)="addTask()" slot="end">Dodaj</ion-button>
   </ion-item>
 

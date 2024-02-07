@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyB7Who5tvpy-xlC1euXIhLH6GY7gpz_Tiw",
+    authDomain: "firestorecrud-d4991.firebaseapp.com",
+    databaseURL: "https://firestorecrud-d4991-default-rtdb.firebaseio.com",
+    projectId: "firestorecrud-d4991",
+    storageBucket: "firestorecrud-d4991.appspot.com",
+    messagingSenderId: "140081216115",
+    appId: "1:140081216115:web:5d39d21ee1c62c6edb0806"
+  }
 };
 
 /*
@@ -16,3 +25,12 @@ export const environment = {
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
 // Import the functions you need from the SDKs you need
 
+
+
+    // apiKey: "AIzaSyBN1tIgEcHY4c-1_Ha0SlmOMqsTrrLeEsU",
+    // authDomain: "iconictodolist.firebaseapp.com",
+    // projectId: "iconictodolist",
+    // storageBucket: "iconictodolist.appspot.com",
+    // databaseURL: "https://iconictodolist-default-rtdb.firebaseio.com/",
+    // messagingSenderId: "436062797403",
+    // appId: "1:436062797403:web:97d4bcacc3a1d6baf5497e"
