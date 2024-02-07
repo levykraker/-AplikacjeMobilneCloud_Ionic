@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      All Task
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,25 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">All task</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list>
+    <ion-item *ngFor="let todo of todos; let i = index">
+      <ion-label>{{ todo.task }}</ion-label>
+      <ion-checkbox [(ngModel)]="todo.completed" (ionChange)="toggleCompletion(i)"></ion-checkbox>
+      <ion-button color="danger" (click)="removeTask(i)" slot="end">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-item>
+    <ion-input placeholder="Dodaj nowe zadanie" [(ngModel)]="newTask" (keyup.enter)="addTask()"></ion-input>
+    <ion-button color="primary" (click)="addTask()" slot="end">Dodaj</ion-button>
+  </ion-item>
+
+
 </ion-content>
